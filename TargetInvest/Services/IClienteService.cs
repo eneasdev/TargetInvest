@@ -9,6 +9,7 @@ namespace TargetInvest.Services
     public interface IClienteService
     {
         ClienteViewModel Cadastrar(ClienteViewModel viewModel);
+        List<ClienteViewModel> ListarClientes();
         ClienteViewModel BuscarCliente(int id);
     }
 }

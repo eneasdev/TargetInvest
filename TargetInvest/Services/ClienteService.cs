@@ -20,6 +20,13 @@ namespace TargetInvest.Services
             _mapper = mapper;
         }
 
+        public List<ClienteViewModel> ListarClientes()
+        {
+            var listaClientes = _mapper.Map<List<ClienteViewModel>>(_clienteRepository.ListarClientes());
+
+            return listaClientes;
+        }
+
         public ClienteViewModel BuscarCliente(int id)
         {
             if (id <= 0) return null;
@@ -33,11 +40,32 @@ namespace TargetInvest.Services
         {
             if (ValidaCPF(viewModel.Cpf) != true) return null;
 
+            GerarId(viewModel);
+
             Cliente novoCliente = _mapper.Map<Cliente>(viewModel);
 
             _clienteRepository.Cadastrar(novoCliente);
 
             return viewModel;
+        }
+
+        public void GerarId(ClienteViewModel cliente)
+        {
+            var listaClientes = _clienteRepository.ListarClientes();
+
+            var ultimo = listaClientes.AsEnumerable().LastOrDefault();
+
+            if (ultimo != null)
+            {
+                cliente.Id = ultimo.Id + 1;
+                cliente.Endereco.ClienteId = cliente.Id;
+
+            }
+            else
+            {
+                cliente.Id = 1;
+                cliente.Endereco.ClienteId = cliente.Id;
+            }
         }
 
         public bool ValidaCPF(string vrCPF)

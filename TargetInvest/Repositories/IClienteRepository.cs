@@ -9,7 +9,7 @@ namespace TargetInvest.Repositories
     public interface IClienteRepository
     {
         void Cadastrar(Cliente cliente);
-
+        List<Cliente> ListarClientes();
         Cliente BuscarCliente(int id);
     }
 }

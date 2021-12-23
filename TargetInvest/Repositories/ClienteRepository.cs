@@ -17,6 +17,11 @@ namespace TargetInvest.Repositories
             _targetContext = targetContext;
         }
 
+        public List<Cliente> ListarClientes()
+        {
+            return _targetContext.Clientes.ToList();
+        }
+
         public Cliente BuscarCliente(int id)
         {
             return _targetContext.Clientes.FirstOrDefault(c => c.Id == id);
