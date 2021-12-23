@@ -20,6 +20,14 @@ namespace TargetInvest.Controllers
             _clienteService = clienteService;
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var cliente = _clienteService.BuscarCliente(id);
+
+            return Ok();
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody] ClienteViewModel viewModel)
         {
@@ -27,7 +35,8 @@ namespace TargetInvest.Controllers
                 return BadRequest();
 
             _clienteService.Cadastrar(viewModel);
-            return Ok(viewModel);
+
+            return CreatedAtAction(nameof(GetById), new { id = viewModel.Id }, viewModel);
         }
     }
 }
