@@ -18,25 +18,10 @@ namespace TargetInvest.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly IClienteService _clienteService;
-        HttpClient client = new HttpClient();
-
+        
         public ClientesController(IClienteService clienteService)
         {
             _clienteService = clienteService;
-        }
-
-        public async Task<EnderecoViewModel> InicilizeAPI(string cep)
-        {
-            client.BaseAddress = new Uri("https://viacep.com.br");
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage resp = await client.GetAsync("ws/" + cep + "/json/");
-
-            var dados = await resp.Content.ReadAsStringAsync();
-
-            var endereco = JsonConvert.DeserializeObject<EnderecoViewModel>(dados);
-
-            return endereco;
         }
 
         [HttpGet("{id}")]
@@ -47,19 +32,48 @@ namespace TargetInvest.Controllers
             return Ok(cliente);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post ([FromBody] ClienteViewModel viewModel)
+        [HttpGet]
+        public IActionResult GetVipDetalhes()
         {
-            viewModel.Endereco = await InicilizeAPI(viewModel.Endereco.Cep);
-                        
-            if (viewModel == null) return BadRequest();
-
-            var isNull = _clienteService.Cadastrar(viewModel);
-
-            if (isNull == null) return BadRequest();
-
-            return Ok(viewModel);
+            return Ok();
         }
 
+        [HttpPost]
+        public IActionResult PostVipConfirmacao()
+        {
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post ([FromBody] ClienteViewModel clienteViewModel)
+        {
+            var enderecoViewModel = await InicilizeAPI(clienteViewModel.Cep);
+
+            if (clienteViewModel == null) return BadRequest();
+
+            var FinalizaCadastroViewModel = _clienteService.Cadastrar(clienteViewModel, enderecoViewModel);
+
+            if (FinalizaCadastroViewModel == null) return BadRequest();
+
+            return Ok(FinalizaCadastroViewModel);
+        }
+
+        private async Task<EnderecoViewModel> InicilizeAPI(string cep)
+        {
+            HttpClient client = new HttpClient();
+
+            client.BaseAddress = new Uri("https://viacep.com.br/");
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage resp = await client.GetAsync("ws/" + cep + "/json/");
+
+            var dados = await resp.Content.ReadAsStringAsync();
+
+            var dadosAlterados = dados.Replace("localidade", "cidade");
+
+            var endereco = JsonConvert.DeserializeObject<EnderecoViewModel>(dadosAlterados);
+
+            return endereco;
+        }
     }
 }

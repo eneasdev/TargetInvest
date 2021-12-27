@@ -36,20 +36,27 @@ namespace TargetInvest.Services
             return _mapper.Map<ClienteViewModel>(cliente);
         }
 
-        public ClienteViewModel Cadastrar(ClienteViewModel viewModel)
+        public FinalizaCadastroViewModel Cadastrar(ClienteViewModel clienteViewModel, EnderecoViewModel enderecoViewModel)
         {
-            if (ValidaCPF(viewModel.Cpf) != true) return null;
+            if (ValidaCPF(clienteViewModel.Cpf) != true) return null;
 
-            GerarId(viewModel);
+            Cliente novoCliente = _mapper.Map<Cliente>(clienteViewModel);
+            novoCliente.Endereco = _mapper.Map<Endereco>(enderecoViewModel);
 
-            Cliente novoCliente = _mapper.Map<Cliente>(viewModel);
+            GerarId(novoCliente);
 
             _clienteRepository.Cadastrar(novoCliente);
 
-            return viewModel;
+            var finalizaCadastro = new FinalizaCadastroViewModel();
+            finalizaCadastro.Cadastrado = true;
+            if(novoCliente.RendaMensal >= 6000)
+            {
+                finalizaCadastro.OferecerPlanoVip = true;
+            }
+            return finalizaCadastro;
         }
 
-        public void GerarId(ClienteViewModel cliente)
+        public void GerarId(Cliente cliente)
         {
             var listaClientes = _clienteRepository.ListarClientes();
 

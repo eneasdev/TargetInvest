@@ -8,7 +8,7 @@ namespace TargetInvest.Services
 {
     public interface IClienteService
     {
-        ClienteViewModel Cadastrar(ClienteViewModel viewModel);
+        FinalizaCadastroViewModel Cadastrar(ClienteViewModel clienteViewModel, EnderecoViewModel enderecoViewModel);
         List<ClienteViewModel> ListarClientes();
         ClienteViewModel BuscarCliente(int id);
     }

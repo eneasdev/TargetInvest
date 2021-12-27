@@ -29,9 +29,8 @@ namespace TargetInvest.Models
         //[DisplayFormat(DataFormatString = "{d:0}")]
         public DateTime DataNascimento { get; set; }
 
-        [BindProperty]
-        public bool Cadastrado { get; set; } = false;
-
-        public EnderecoViewModel Endereco { get; set; }
+        public string Cep { get; set; }
+        public bool OferecerPlanoVip { get; set; }
+        public bool Cadastrado { get; set; }
     }
 }

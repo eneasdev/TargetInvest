@@ -8,4 +8,3 @@
     [Vip]            BIT           NOT NULL,
     CONSTRAINT [PK_Clientes] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
-
