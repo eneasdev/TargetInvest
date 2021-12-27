@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using TargetInvest.Entities;
 using TargetInvest.Models;
 using TargetInvest.Services;
 
@@ -14,10 +18,25 @@ namespace TargetInvest.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly IClienteService _clienteService;
+        HttpClient client = new HttpClient();
 
         public ClientesController(IClienteService clienteService)
         {
             _clienteService = clienteService;
+        }
+
+        public async Task<EnderecoViewModel> InicilizeAPI(string cep)
+        {
+            client.BaseAddress = new Uri("https://viacep.com.br");
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage resp = await client.GetAsync("ws/" + cep + "/json/");
+
+            var dados = await resp.Content.ReadAsStringAsync();
+
+            var endereco = JsonConvert.DeserializeObject<EnderecoViewModel>(dados);
+
+            return endereco;
         }
 
         [HttpGet("{id}")]
@@ -25,18 +44,22 @@ namespace TargetInvest.Controllers
         {
             var cliente = _clienteService.BuscarCliente(id);
 
-            return Ok();
+            return Ok(cliente);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] ClienteViewModel viewModel)
+        public async Task<IActionResult> Post ([FromBody] ClienteViewModel viewModel)
         {
-            if (viewModel == null)
-                return BadRequest();
+            viewModel.Endereco = await InicilizeAPI(viewModel.Endereco.Cep);
+                        
+            if (viewModel == null) return BadRequest();
 
-            _clienteService.Cadastrar(viewModel);
+            var isNull = _clienteService.Cadastrar(viewModel);
 
-            return CreatedAtAction(nameof(GetById), new { id = viewModel.Id }, viewModel);
+            if (isNull == null) return BadRequest();
+
+            return Ok(viewModel);
         }
+
     }
 }

@@ -2,17 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace TargetInvest.Models
 {
-    public class ClienteViewModel
+    public class ClienteCadastroViewModel
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required(ErrorMessage = "Nome completo deve ser informado.")]
         [StringLength(50, MinimumLength = 10, ErrorMessage = "Nome deve ter no mínimo 10 e no máximo 50 caracteres.")]
         public string NomeCompleto { get; set; }
