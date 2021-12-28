@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using TargetInvest.Attributes;
 using TargetInvest.Entities;
 using TargetInvest.Models;
 using TargetInvest.Services;
@@ -15,6 +16,7 @@ namespace TargetInvest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKey]
     public class ClientesController : ControllerBase
     {
         private readonly IClienteService _clienteService;
@@ -29,20 +31,22 @@ namespace TargetInvest.Controllers
         {
             var cliente = _clienteService.BuscarCliente(id);
 
+            if (cliente == null) return NotFound();
+
             return Ok(cliente);
         }
 
-        [HttpGet]
-        public IActionResult GetVipDetalhes()
-        {
-            return Ok();
-        }
-
-        [HttpPost]
-        public IActionResult PostVipConfirmacao()
-        {
-            return Ok();
-        }
+        //[HttpGet]
+        //public IActionResult GetVipDetalhes()
+        //{
+        //    return Ok();
+        //}
+        //
+        //[HttpPost]
+        //public IActionResult PostVipConfirmacao()
+        //{
+        //    return Ok();
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post ([FromBody] ClienteViewModel clienteViewModel)
@@ -65,6 +69,7 @@ namespace TargetInvest.Controllers
             client.BaseAddress = new Uri("https://viacep.com.br/");
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
+
             HttpResponseMessage resp = await client.GetAsync("ws/" + cep + "/json/");
 
             var dados = await resp.Content.ReadAsStringAsync();

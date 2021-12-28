@@ -30,7 +30,5 @@ namespace TargetInvest.Models
         public DateTime DataNascimento { get; set; }
 
         public string Cep { get; set; }
-        public bool OferecerPlanoVip { get; set; }
-        public bool Cadastrado { get; set; }
     }
 }
