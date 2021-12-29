@@ -8,7 +8,7 @@ namespace TargetInvest.Entities
 {
     public class Vip
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }

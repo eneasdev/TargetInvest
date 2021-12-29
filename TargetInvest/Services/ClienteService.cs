@@ -51,8 +51,6 @@ namespace TargetInvest.Services
             Cliente novoCliente = _mapper.Map<Cliente>(clienteViewModel);
             novoCliente.Endereco = _mapper.Map<Endereco>(enderecoViewModel);
 
-            //GerarId(novoCliente);
-
             var finalizaCadastro = new FinalizaCadastroViewModel
             {
                 Cadastrado = _clienteRepository.Cadastrar(novoCliente),
@@ -60,25 +58,6 @@ namespace TargetInvest.Services
             };
 
             return finalizaCadastro;
-        }
-
-        private void GerarId(Cliente cliente)
-        {
-            var listaClientes = _clienteRepository.ListarClientes();
-
-            var ultimo = listaClientes.AsEnumerable().LastOrDefault();
-
-            if (ultimo != null)
-            {
-                cliente.Id = ultimo.Id + 1;
-                cliente.Endereco.Id = cliente.Id;
-
-            }
-            else
-            {
-                cliente.Id = 1;
-                cliente.Endereco.Id = cliente.Id;
-            }
         }
 
         private bool ValidaCPF(string vrCPF)

@@ -14,7 +14,7 @@ namespace TargetInvest.Entities
             DataCadastro = DateTime.Now;
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string NomeCompleto { get; set; }
         public string Cpf { get; set; }

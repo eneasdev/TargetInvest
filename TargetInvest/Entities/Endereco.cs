@@ -4,7 +4,7 @@ namespace TargetInvest.Entities
 {
     public class Endereco
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Cep { get; set; }
         public string Logradouro { get; set; }
