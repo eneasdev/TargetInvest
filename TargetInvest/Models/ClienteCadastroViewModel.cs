@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TargetInvest.Models
 {
-    public class ClienteViewModel
+    public class ClienteCadastroViewModel
     {
         [Key]
         public int Id { get; set; }

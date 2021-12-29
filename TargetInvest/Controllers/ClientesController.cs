@@ -16,7 +16,6 @@ namespace TargetInvest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ApiKey]
     public class ClientesController : ControllerBase
     {
         private readonly IClienteService _clienteService;
@@ -26,6 +25,7 @@ namespace TargetInvest.Controllers
             _clienteService = clienteService;
         }
 
+        [ApiKey]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -36,21 +36,8 @@ namespace TargetInvest.Controllers
             return Ok(cliente);
         }
 
-        //[HttpGet("/vip")]
-        //public IActionResult GetVipDetalhes()
-        //{
-        //    _planoService
-        //    return Ok();
-        //}
-        
-        //[HttpPost("/plano")]
-        //public IActionResult PostVipConfirmacao()
-        //{
-        //    return Ok();
-        //}
-
         [HttpPost]
-        public async Task<IActionResult> Post ([FromBody] ClienteViewModel clienteViewModel)
+        public async Task<IActionResult> Post ([FromBody] ClienteCadastroViewModel clienteViewModel)
         {
             var enderecoViewModel = await InicilizeAPI(clienteViewModel.Cep);
 

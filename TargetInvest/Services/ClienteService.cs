@@ -12,39 +12,31 @@ namespace TargetInvest.Services
     public class ClienteService : IClienteService
     {
         private readonly IClienteRepository _clienteRepository;
-        private readonly IVipRepository _vipRepository;
         private readonly IMapper _mapper;
 
-        public ClienteService(IClienteRepository clienteRepository, IVipRepository vipRepository, IMapper mapper)
+        public ClienteService(IClienteRepository clienteRepository, IMapper mapper)
         {
             _clienteRepository = clienteRepository;
-            _vipRepository = vipRepository;
             _mapper = mapper;
         }
 
-        public List<ClienteViewModel> ListarClientes()
+        public List<ClienteCadastroViewModel> ListarClientes()
         {
-            var listaClientes = _mapper.Map<List<ClienteViewModel>>(_clienteRepository.ListarClientes());
+            var listaClientes = _mapper.Map<List<ClienteCadastroViewModel>>(_clienteRepository.ListarClientes());
 
             return listaClientes;
         }
 
-        public ClienteViewModel BuscarCliente(int id)
+        public ClienteCadastroViewModel BuscarCliente(int id)
         {
             if (id <= 0) return null;
 
             var cliente = _clienteRepository.BuscarCliente(id);
 
-            return _mapper.Map<ClienteViewModel>(cliente);
+            return _mapper.Map<ClienteCadastroViewModel>(cliente);
         }
 
-        public List<VipViewModel> ListarVips()
-        {
-            var listaVips = _mapper.Map<List<VipViewModel>>(_vipRepository.ListarVips());
-            return listaVips;
-        }
-
-        public FinalizaCadastroViewModel Cadastrar(ClienteViewModel clienteViewModel, EnderecoViewModel enderecoViewModel)
+        public FinalizaCadastroViewModel Cadastrar(ClienteCadastroViewModel clienteViewModel, EnderecoViewModel enderecoViewModel)
         {
             if (ValidaCPF(clienteViewModel.Cpf) != true) return null;
 

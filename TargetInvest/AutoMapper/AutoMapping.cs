@@ -12,11 +12,14 @@ namespace TargetInvest.AutoMapper
     {
         public AutoMapping()
         {
-            CreateMap<ClienteViewModel, Cliente>();
-            CreateMap<Cliente, ClienteViewModel>();
+            CreateMap<ClienteCadastroViewModel, Cliente>();
+            CreateMap<Cliente, ClienteCadastroViewModel>();
 
             CreateMap<EnderecoViewModel, Endereco>();
             CreateMap<Endereco, EnderecoViewModel>();
+
+            CreateMap<VipViewModel, Vip>();
+            CreateMap<Vip, VipViewModel>();
         }
     }
 }
