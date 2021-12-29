@@ -31,8 +31,8 @@ namespace TargetInvest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IClienteService, ClienteService>();
-
             services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IVipRepository, VipRepository>();
 
             services.AddAutoMapper(typeof(Startup));
 

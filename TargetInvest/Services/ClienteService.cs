@@ -12,11 +12,13 @@ namespace TargetInvest.Services
     public class ClienteService : IClienteService
     {
         private readonly IClienteRepository _clienteRepository;
+        private readonly IVipRepository _vipRepository;
         private readonly IMapper _mapper;
 
-        public ClienteService(IClienteRepository clienteRepository, IMapper mapper)
+        public ClienteService(IClienteRepository clienteRepository, IVipRepository vipRepository, IMapper mapper)
         {
             _clienteRepository = clienteRepository;
+            _vipRepository = vipRepository;
             _mapper = mapper;
         }
 
@@ -36,6 +38,12 @@ namespace TargetInvest.Services
             return _mapper.Map<ClienteViewModel>(cliente);
         }
 
+        public List<VipViewModel> ListarVips()
+        {
+            var listaVips = _mapper.Map<List<VipViewModel>>(_vipRepository.ListarVips());
+            return listaVips;
+        }
+
         public FinalizaCadastroViewModel Cadastrar(ClienteViewModel clienteViewModel, EnderecoViewModel enderecoViewModel)
         {
             if (ValidaCPF(clienteViewModel.Cpf) != true) return null;
@@ -43,20 +51,18 @@ namespace TargetInvest.Services
             Cliente novoCliente = _mapper.Map<Cliente>(clienteViewModel);
             novoCliente.Endereco = _mapper.Map<Endereco>(enderecoViewModel);
 
-            GerarId(novoCliente);
+            //GerarId(novoCliente);
 
-            _clienteRepository.Cadastrar(novoCliente);
-
-            var finalizaCadastro = new FinalizaCadastroViewModel();
-            finalizaCadastro.Cadastrado = true;
-            if(novoCliente.RendaMensal >= 6000)
+            var finalizaCadastro = new FinalizaCadastroViewModel
             {
-                finalizaCadastro.OferecerPlanoVip = true;
-            }
+                Cadastrado = _clienteRepository.Cadastrar(novoCliente),
+                OferecerPlanoVip = novoCliente.OferecerPlanoVip()
+            };
+
             return finalizaCadastro;
         }
 
-        public void GerarId(Cliente cliente)
+        private void GerarId(Cliente cliente)
         {
             var listaClientes = _clienteRepository.ListarClientes();
 
@@ -65,17 +71,17 @@ namespace TargetInvest.Services
             if (ultimo != null)
             {
                 cliente.Id = ultimo.Id + 1;
-                cliente.Endereco.ClienteId = cliente.Id;
+                cliente.Endereco.Id = cliente.Id;
 
             }
             else
             {
                 cliente.Id = 1;
-                cliente.Endereco.ClienteId = cliente.Id;
+                cliente.Endereco.Id = cliente.Id;
             }
         }
 
-        public bool ValidaCPF(string vrCPF)
+        private bool ValidaCPF(string vrCPF)
         {
             string valor = vrCPF.Replace(".", "");
 

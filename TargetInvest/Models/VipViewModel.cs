@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TargetInvest.Entities
+namespace TargetInvest.Models
 {
-    public class Vip
+    public class VipViewModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }

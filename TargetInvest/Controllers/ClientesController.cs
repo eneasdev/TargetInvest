@@ -36,13 +36,14 @@ namespace TargetInvest.Controllers
             return Ok(cliente);
         }
 
-        //[HttpGet]
+        //[HttpGet("/vip")]
         //public IActionResult GetVipDetalhes()
         //{
+        //    _planoService
         //    return Ok();
         //}
-        //
-        //[HttpPost]
+        
+        //[HttpPost("/plano")]
         //public IActionResult PostVipConfirmacao()
         //{
         //    return Ok();

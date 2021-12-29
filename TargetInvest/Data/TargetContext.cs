@@ -14,18 +14,17 @@ namespace TargetInvest.Data
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Vip> Vips { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
             modelBuilder.Entity<Cliente>()
-                .HasKey(c => c.Id)
-                .HasName("PK_Clientes");
+                .HasOne(c => c.Endereco);
 
-            modelBuilder.Entity<Endereco>()
-                .HasKey(e => e.ClienteId)
-                .HasName("PK_Enderecos");
+            modelBuilder.Entity<Cliente>()
+                .HasOne(c => c.Vip);
         }
     }
 }

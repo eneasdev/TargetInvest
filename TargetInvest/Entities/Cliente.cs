@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace TargetInvest.Entities
             DataCadastro = DateTime.Now;
         }
 
-        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string NomeCompleto { get; set; }
         public string Cpf { get; set; }
@@ -21,18 +22,13 @@ namespace TargetInvest.Entities
         public Endereco Endereco { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataCadastro { get; set; }
-        public bool Vip { get; set; } = false;
+        public Vip Vip { get; set; }
 
-        public bool OferecerPlanoVip(Cliente cliente)
+        public bool OferecerPlanoVip()
         {
-            if (cliente.RendaMensal >= 6000)
+            if (RendaMensal >= 6000)
                 return true;
             return false;
-        }
-
-        public void AceitarPlano()
-        {
-            Vip = true;
         }
     }
 }

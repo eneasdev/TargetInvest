@@ -1,8 +1,11 @@
-﻿namespace TargetInvest.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TargetInvest.Entities
 {
     public class Endereco
     {
-        public int ClienteId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
         public string Cep { get; set; }
         public string Logradouro { get; set; }
         public string Bairro { get; set; }

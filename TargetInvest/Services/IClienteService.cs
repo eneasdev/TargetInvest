@@ -11,5 +11,6 @@ namespace TargetInvest.Services
         FinalizaCadastroViewModel Cadastrar(ClienteViewModel clienteViewModel, EnderecoViewModel enderecoViewModel);
         List<ClienteViewModel> ListarClientes();
         ClienteViewModel BuscarCliente(int id);
+
     }
 }

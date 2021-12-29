@@ -6,10 +6,8 @@ using TargetInvest.Entities;
 
 namespace TargetInvest.Repositories
 {
-    public interface IClienteRepository
+    public interface IVipRepository
     {
-        bool Cadastrar(Cliente cliente);
-        List<Cliente> ListarClientes();
-        Cliente BuscarCliente(int id);
+        List<Vip> ListarVips();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +20,9 @@ namespace TargetInvest.Repositories
 
         public List<Cliente> ListarClientes()
         {
-            return _targetContext.Clientes.ToList();
+            return _targetContext.Clientes
+                .Include(c => c.Endereco)
+                .ToList();
         }
 
         public Cliente BuscarCliente(int id)
@@ -27,10 +30,12 @@ namespace TargetInvest.Repositories
             return _targetContext.Clientes.FirstOrDefault(c => c.Id == id);
         }
 
-        public void Cadastrar(Cliente cliente)
+        public bool Cadastrar(Cliente cliente)
         {
-            _targetContext.Clientes.Add(cliente);
-            _targetContext.SaveChanges();
+                _targetContext.Clientes.Add(cliente);
+                _targetContext.SaveChanges();
+                return true;
+                //return false;
         }
     }
 }
