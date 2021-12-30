@@ -10,6 +10,7 @@ namespace TargetInvest.Repositories
     {
         bool Cadastrar(Cliente cliente);
         List<Cliente> ListarClientes();
+        List<Cliente> ListaPorDataDeCadastro(DateTime dataInicial, DateTime dataFinal);
         Cliente BuscarCliente(int id);
         Cliente Atualizar(Cliente cliente);
     }

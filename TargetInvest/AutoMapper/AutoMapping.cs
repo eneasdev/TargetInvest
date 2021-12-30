@@ -15,6 +15,9 @@ namespace TargetInvest.AutoMapper
             CreateMap<ClienteCadastroViewModel, Cliente>();
             CreateMap<Cliente, ClienteCadastroViewModel>();
 
+            CreateMap<ClienteViewModel, Cliente>();
+            CreateMap<Cliente, ClienteViewModel>();
+
             CreateMap<EnderecoViewModel, Endereco>();
             CreateMap<Endereco, EnderecoViewModel>();
 

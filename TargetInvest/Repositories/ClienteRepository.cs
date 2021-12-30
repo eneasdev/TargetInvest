@@ -25,6 +25,13 @@ namespace TargetInvest.Repositories
                 .ToList();
         }
 
+        public List<Cliente> ListaPorDataDeCadastro(DateTime dataInicial, DateTime dataFinal)
+        {
+            return _targetContext.Clientes
+                .Where(c => c.DataCadastro >= dataInicial && c.DataCadastro <= dataFinal)
+                .ToList();
+        }
+
         public Cliente BuscarCliente(int id)
         {
             return _targetContext.Clientes.FirstOrDefault(c => c.Id == id);
