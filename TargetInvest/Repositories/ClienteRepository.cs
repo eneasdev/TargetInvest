@@ -32,6 +32,13 @@ namespace TargetInvest.Repositories
                 .ToList();
         }
 
+        public List<Cliente> ListarPorRenda(double valor)
+        {
+            return _targetContext.Clientes
+                .Where(c => c.RendaMensal >= valor)
+                .ToList();
+        }
+
         public Cliente BuscarCliente(int id)
         {
             return _targetContext.Clientes.FirstOrDefault(c => c.Id == id);

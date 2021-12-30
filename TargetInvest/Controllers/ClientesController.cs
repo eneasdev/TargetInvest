@@ -36,6 +36,20 @@ namespace TargetInvest.Controllers
             return Ok(cliente);
         }
 
+        [HttpGet("data-cadastro")]
+        public IActionResult Get([FromBody] PesquisaDataCadastro dataCadastro)
+        {
+            var listaDataDeCadastro = _clienteService.ListarPorDataCadastro(dataCadastro.DataCadastroInicial, dataCadastro.DataCadastroFinal);
+            return Ok(listaDataDeCadastro);
+        }
+
+        [HttpGet("pesquisa-por-renda/{valor}")]
+        public IActionResult Get(double Valor)
+        {
+            var listaPorRenda = _clienteService.ListarPorRenda(Valor);
+            return Ok(listaPorRenda);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post ([FromBody] ClienteCadastroViewModel clienteViewModel)
         {

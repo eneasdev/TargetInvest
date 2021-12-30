@@ -35,11 +35,20 @@ namespace TargetInvest.Services
 
             return _mapper.Map<ClienteCadastroViewModel>(cliente);
         }
-        public List<ClienteViewModel> ListarClientesPorDataCadastro(PesquisaDataCadastro data)
+        public List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal)
         {
             var clientesPorDataCadastro = _mapper.Map<List<ClienteViewModel>>
-                (_clienteRepository.ListaPorDataDeCadastro(data.DataCadastroInicial, data.DataCadastroFinal));
+                (_clienteRepository.ListaPorDataDeCadastro(dataInicial, dataFinal));
+            
             return clientesPorDataCadastro;
+        }
+
+        public List<ClienteViewModel> ListarPorRenda(double valor)
+        {
+            var clientesPorRenda = _mapper.Map<List<ClienteViewModel>>
+                (_clienteRepository.ListarPorRenda(valor));
+
+            return clientesPorRenda;
         }
 
         public FinalizaCadastroViewModel Cadastrar(ClienteCadastroViewModel clienteViewModel, EnderecoViewModel enderecoViewModel)

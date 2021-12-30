@@ -11,6 +11,5 @@ namespace TargetInvest.Models
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataCadastro { get; set; }
-        public bool Vip { get; set; }
     }
 }

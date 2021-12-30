@@ -10,6 +10,8 @@ namespace TargetInvest.Services
     {
         FinalizaCadastroViewModel Cadastrar(ClienteCadastroViewModel clienteViewModel, EnderecoViewModel enderecoViewModel);
         List<ClienteCadastroViewModel> ListarClientes();
+        List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal);
+        List<ClienteViewModel> ListarPorRenda(double valor);
         ClienteCadastroViewModel BuscarCliente(int id);
 
     }
