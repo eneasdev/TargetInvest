@@ -26,6 +26,16 @@ namespace TargetInvest.Services
 
             return listaClientes;
         }
+        public EnderecoViewModel BuscarClienteEndereco(int id)
+        {
+            if (id <= 0) return null;
+
+            var cliente = _clienteRepository.BuscarCliente(id);
+
+            Endereco endereco = cliente.Endereco;
+
+            return _mapper.Map<EnderecoViewModel>(endereco);
+        }
 
         public ClienteCadastroViewModel BuscarCliente(int id)
         {
@@ -35,6 +45,7 @@ namespace TargetInvest.Services
 
             return _mapper.Map<ClienteCadastroViewModel>(cliente);
         }
+
         public List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal)
         {
             var clientesPorDataCadastro = _mapper.Map<List<ClienteViewModel>>

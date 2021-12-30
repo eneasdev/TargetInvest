@@ -25,6 +25,16 @@ namespace TargetInvest.Controllers
             _clienteService = clienteService;
         }
 
+        [HttpGet("{id}/endereco")]
+        public IActionResult Get(int id)
+        {
+            var endereco = _clienteService.BuscarClienteEndereco(id);
+
+            if (endereco == null) return BadRequest();
+
+            return Ok(endereco);
+        }
+
         [ApiKey]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)

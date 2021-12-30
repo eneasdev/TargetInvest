@@ -13,6 +13,7 @@ namespace TargetInvest.Services
         List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal);
         List<ClienteViewModel> ListarPorRenda(double valor);
         ClienteCadastroViewModel BuscarCliente(int id);
+        EnderecoViewModel BuscarClienteEndereco(int id);
 
     }
 }

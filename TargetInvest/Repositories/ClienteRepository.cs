@@ -41,7 +41,9 @@ namespace TargetInvest.Repositories
 
         public Cliente BuscarCliente(int id)
         {
-            return _targetContext.Clientes.FirstOrDefault(c => c.Id == id);
+            return _targetContext.Clientes
+                .Include(c => c.Endereco)
+                .FirstOrDefault(c => c.Id == id);
         }
 
         public bool Cadastrar(Cliente cliente)
