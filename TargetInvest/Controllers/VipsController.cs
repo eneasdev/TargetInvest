@@ -20,17 +20,18 @@ namespace TargetInvest.Controllers
             _vipService = vipService;
         }
 
-        [HttpGet]
-        public IActionResult GetVipDetalhes()
+        [HttpGet("{Id}")]
+        public IActionResult Get(int id)
         {
-            var vipDetalhes = _vipService.ListarVips();
+            var vipDetalhes = _vipService.BuscarVip(id);
 
             return Ok(vipDetalhes);
         }
 
         [HttpPost]
-        public IActionResult PostVipConfirmacao()
+        public IActionResult Post([FromBody] bool resposta)
         {
+            _vipService.VipResposta(resposta);
             return Ok();
         }
     }

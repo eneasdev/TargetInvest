@@ -32,10 +32,21 @@ namespace TargetInvest.Repositories
 
         public bool Cadastrar(Cliente cliente)
         {
+            try
+            {
                 _targetContext.Clientes.Add(cliente);
                 _targetContext.SaveChanges();
                 return true;
-                //return false;
+            }
+            catch
+            {
+                return false;
+            } 
+        }
+
+        public Cliente Atualizar(Cliente cliente)
+        {
+            _targetContext.Clientes.Update(cliente);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace TargetInvest.Repositories
 {
     public interface IVipRepository
     {
-        List<Vip> ListarVips();
+        Vip BuscarVip(int id);
     }
 }

@@ -8,6 +8,6 @@ namespace TargetInvest.Services
 {
     public interface IVipService
     {
-        List<VipViewModel> ListarVips();
+        VipViewModel BuscarVip(int id);
     }
 }

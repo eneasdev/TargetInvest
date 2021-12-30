@@ -16,9 +16,9 @@ namespace TargetInvest.Repositories
             _targetContext = targetContext;
         }
 
-        public List<Vip> ListarVips()
+        public Vip BuscarVip(int id)
         {
-            return _targetContext.Vips.ToList();
+            return _targetContext.Vips.FirstOrDefault(v => v.Id == id);
         }
     }
 }
