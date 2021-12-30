@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TargetInvest.Entities;
 using TargetInvest.Models;
 using TargetInvest.Repositories;
 
@@ -30,11 +31,19 @@ namespace TargetInvest.Services
             return _mapper.Map<VipViewModel>(vip);
         }
 
-        public bool VipResposta(bool resposta)
+        public bool VipResposta(VipRespostaViewModel vipRespostaViewModel)
         {
-            if ( resposta == true)
+            var cliente = _clienteRepository.BuscarCliente(vipRespostaViewModel.ClienteId);
+            var vip = _vipRepository.BuscarVip(1);
+            if ( vipRespostaViewModel.Resposta == true)
             {
-                _clienteRepository.
+                cliente.Vip = vip;
+                _clienteRepository.Atualizar(cliente);
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

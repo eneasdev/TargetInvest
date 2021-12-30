@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TargetInvest.Attributes;
+using TargetInvest.Models;
 using TargetInvest.Services;
 
 namespace TargetInvest.Controllers
@@ -29,10 +30,10 @@ namespace TargetInvest.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] bool resposta)
+        public IActionResult Post([FromBody] VipRespostaViewModel vipRespostaViewModel)
         {
-            _vipService.VipResposta(resposta);
-            return Ok();
+            var resposta = _vipService.VipResposta(vipRespostaViewModel);
+            return Ok(resposta);
         }
     }
 }

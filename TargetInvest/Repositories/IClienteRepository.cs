@@ -11,5 +11,6 @@ namespace TargetInvest.Repositories
         bool Cadastrar(Cliente cliente);
         List<Cliente> ListarClientes();
         Cliente BuscarCliente(int id);
+        Cliente Atualizar(Cliente cliente);
     }
 }

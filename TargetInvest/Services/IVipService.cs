@@ -9,5 +9,6 @@ namespace TargetInvest.Services
     public interface IVipService
     {
         VipViewModel BuscarVip(int id);
+        bool VipResposta(VipRespostaViewModel vipRespostaViewModel);
     }
 }

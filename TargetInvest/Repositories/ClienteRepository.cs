@@ -47,6 +47,8 @@ namespace TargetInvest.Repositories
         public Cliente Atualizar(Cliente cliente)
         {
             _targetContext.Clientes.Update(cliente);
+            _targetContext.SaveChanges();
+            return cliente;
         }
     }
 }
