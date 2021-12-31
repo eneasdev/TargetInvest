@@ -9,11 +9,12 @@ namespace TargetInvest.Services
     public interface IClienteService
     {
         FinalizaCadastroViewModel Cadastrar(ClienteCadastroViewModel clienteViewModel, EnderecoViewModel enderecoViewModel);
-        List<ClienteCadastroViewModel> ListarClientes();
         List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal);
+        List<ClienteCadastroViewModel> ListarClientes();
         List<ClienteViewModel> ListarPorRenda(double valor);
         ClienteCadastroViewModel BuscarCliente(int id);
         EnderecoViewModel BuscarClienteEndereco(int id);
+        void AtualizarEndereco(int id, EnderecoViewModel enderecoViewModel);
 
     }
 }

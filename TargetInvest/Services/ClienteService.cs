@@ -78,6 +78,15 @@ namespace TargetInvest.Services
             return finalizaCadastro;
         }
 
+        public void AtualizarEndereco(int id, EnderecoViewModel enderecoViewModel)
+        {
+            var cliente = _clienteRepository.BuscarCliente(id);
+
+            cliente.Endereco = _mapper.Map<Endereco>(enderecoViewModel);
+
+            _clienteRepository.Atualizar(cliente);
+        }
+
         private bool ValidaCPF(string vrCPF)
         {
             string valor = vrCPF.Replace(".", "");

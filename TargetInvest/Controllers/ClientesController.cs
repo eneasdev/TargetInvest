@@ -25,16 +25,6 @@ namespace TargetInvest.Controllers
             _clienteService = clienteService;
         }
 
-        [HttpGet("{id}/endereco")]
-        public IActionResult Get(int id)
-        {
-            var endereco = _clienteService.BuscarClienteEndereco(id);
-
-            if (endereco == null) return BadRequest();
-
-            return Ok(endereco);
-        }
-
         [ApiKey]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
@@ -46,6 +36,16 @@ namespace TargetInvest.Controllers
             return Ok(cliente);
         }
 
+        [HttpGet("{id}/endereco")]
+        public IActionResult Get(int id)
+        {
+            var endereco = _clienteService.BuscarClienteEndereco(id);
+
+            if (endereco == null) return BadRequest();
+
+            return Ok(endereco);
+        }
+
         [HttpGet("data-cadastro")]
         public IActionResult Get([FromBody] PesquisaDataCadastro dataCadastro)
         {
@@ -53,7 +53,7 @@ namespace TargetInvest.Controllers
             return Ok(listaDataDeCadastro);
         }
 
-        [HttpGet("pesquisa-por-renda/{valor}")]
+        [HttpGet("renda/{valor}")]
         public IActionResult Get(double Valor)
         {
             var listaPorRenda = _clienteService.ListarPorRenda(Valor);
@@ -72,6 +72,13 @@ namespace TargetInvest.Controllers
             if (FinalizaCadastroViewModel == null) return BadRequest();
 
             return Ok(FinalizaCadastroViewModel);
+        }
+
+        [HttpPut("{id}/endereco")]
+        public IActionResult Put(int id, [FromBody] EnderecoViewModel enderecoViewModel)
+        {
+            _clienteService.AtualizarEndereco(id, enderecoViewModel);
+            return Ok();
         }
 
         private async Task<EnderecoViewModel> InicilizeAPI(string cep)
