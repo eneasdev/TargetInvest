@@ -26,6 +26,31 @@ namespace TargetInvest.Services
 
             return listaClientes;
         }
+
+        public IndiceVipsViewModel IndiceVip(IndiceVipsViewModel indiceVips)
+        {
+            var listaAdesao = new List<Cliente>();
+            var listaPotencialAdesao = new List<Cliente>();
+            var listaClientes = _clienteRepository.ListarClientes();
+
+            foreach(var cliente in listaClientes)
+            {
+                if(cliente.Vip != null)
+                {
+                    listaAdesao.Add(cliente);
+                }
+                else
+                {
+                    listaPotencialAdesao.Add(cliente);
+                }
+            }
+
+            indiceVips.Adesão = listaAdesao.Count();
+            indiceVips.PotencialAdesão = listaPotencialAdesao.Count();
+
+            return indiceVips;
+        }
+
         public EnderecoViewModel BuscarClienteEndereco(int id)
         {
             if (id <= 0) return null;
@@ -83,7 +108,7 @@ namespace TargetInvest.Services
             var cliente = _clienteRepository.BuscarCliente(id);
 
             cliente.Endereco.Update(_mapper.Map<Endereco>(enderecoViewModel));
-            var algo = cliente;
+
             _clienteRepository.Atualizar(cliente);
         }
 

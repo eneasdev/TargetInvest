@@ -12,6 +12,7 @@ namespace TargetInvest.Services
         List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal);
         List<ClienteCadastroViewModel> ListarClientes();
         List<ClienteViewModel> ListarPorRenda(double valor);
+        IndiceVipsViewModel IndiceVip(IndiceVipsViewModel indiceVips);
         ClienteCadastroViewModel BuscarCliente(int id);
         EnderecoViewModel BuscarClienteEndereco(int id);
         void AtualizarEndereco(int id, EnderecoViewModel enderecoViewModel);

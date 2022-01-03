@@ -36,6 +36,18 @@ namespace TargetInvest.Controllers
             return Ok(cliente);
         }
 
+        [ApiKey]
+        [HttpGet("indice-vips")]
+        public IActionResult Get(IndiceVipsViewModel indiceVipsViewModel)
+        {
+            var endereco = _clienteService.BuscarClienteEndereco(id);
+
+            if (endereco == null) return BadRequest();
+
+            return Ok(endereco);
+        }
+
+        [ApiKey]
         [HttpGet("{id}/endereco")]
         public IActionResult Get(int id)
         {
@@ -46,6 +58,7 @@ namespace TargetInvest.Controllers
             return Ok(endereco);
         }
 
+        [ApiKey]
         [HttpGet("data-cadastro")]
         public IActionResult Get([FromBody] PesquisaDataCadastro dataCadastro)
         {
@@ -53,6 +66,7 @@ namespace TargetInvest.Controllers
             return Ok(listaDataDeCadastro);
         }
 
+        [ApiKey]
         [HttpGet("renda/{valor}")]
         public IActionResult Get(double Valor)
         {
@@ -74,6 +88,7 @@ namespace TargetInvest.Controllers
             return Ok(FinalizaCadastroViewModel);
         }
 
+        [ApiKey]
         [HttpPut("{id}/endereco")]
         public IActionResult Put(int id, [FromBody] EnderecoViewModel enderecoViewModel)
         {

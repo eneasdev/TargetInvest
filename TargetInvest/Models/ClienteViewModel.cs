@@ -9,6 +9,7 @@ namespace TargetInvest.Models
     {
         public string NomeCompleto { get; set; }
         public string Cpf { get; set; }
+        public string Renda { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataCadastro { get; set; }
     }
