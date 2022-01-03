@@ -82,8 +82,8 @@ namespace TargetInvest.Services
         {
             var cliente = _clienteRepository.BuscarCliente(id);
 
-            cliente.Endereco = _mapper.Map<Endereco>(enderecoViewModel);
-
+            cliente.Endereco.Update(_mapper.Map<Endereco>(enderecoViewModel));
+            var algo = cliente;
             _clienteRepository.Atualizar(cliente);
         }
 

@@ -12,5 +12,15 @@ namespace TargetInvest.Entities
         public string Cidade { get; set; }
         public string Uf { get; set; }
         public string Complemento { get; set; }
+
+        public void Update(Endereco endereco)
+        {
+            Cep = endereco.Cep;
+            Logradouro = endereco.Logradouro;
+            Bairro = endereco.Bairro;
+            Cidade = endereco.Cidade;
+            Uf = endereco.Uf;
+            Complemento = endereco.Complemento;
+        }
     }
 }

@@ -30,10 +30,10 @@ namespace TargetInvest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IClienteService, ClienteService>();
-            services.AddScoped<IVipService, VipService>();
-            services.AddScoped<IClienteRepository, ClienteRepository>();
-            services.AddScoped<IVipRepository, VipRepository>();
+            services.AddTransient<IClienteService, ClienteService>();
+            services.AddTransient<IVipService, VipService>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IVipRepository, VipRepository>();
 
             services.AddAutoMapper(typeof(Startup));
 
