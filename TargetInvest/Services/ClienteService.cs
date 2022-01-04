@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TargetInvest.Entities;
 using TargetInvest.Models;
 using TargetInvest.Repositories;
@@ -13,6 +12,7 @@ namespace TargetInvest.Services
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IMapper _mapper;
+        private const int valorMinimoParaSerVip = 6000;
 
         public ClienteService(IClienteRepository clienteRepository, IMapper mapper)
         {
@@ -20,22 +20,16 @@ namespace TargetInvest.Services
             _mapper = mapper;
         }
 
-        public List<ClienteCadastroViewModel> ListarClientes()
-        {
-            var listaClientes = _mapper.Map<List<ClienteCadastroViewModel>>(_clienteRepository.ListarClientes());
-
-            return listaClientes;
-        }
-
-        public IndiceVipsViewModel IndiceVip(IndiceVipsViewModel indiceVips)
+        public IndiceVipsViewModel IndiceVip()
         {
             var listaAdesao = new List<Cliente>();
             var listaPotencialAdesao = new List<Cliente>();
-            var listaClientes = _clienteRepository.ListarClientes();
+            var listaMaiorSeisMil = _clienteRepository.ListarClientes()
+                .Where(c => c.RendaMensal >= valorMinimoParaSerVip);
 
-            foreach(var cliente in listaClientes)
+            foreach (var cliente in listaMaiorSeisMil)
             {
-                if(cliente.Vip != null)
+                if (cliente.Vip != null)
                 {
                     listaAdesao.Add(cliente);
                 }
@@ -45,10 +39,18 @@ namespace TargetInvest.Services
                 }
             }
 
+            var indiceVips = new IndiceVipsViewModel();
+
             indiceVips.Adesão = listaAdesao.Count();
             indiceVips.PotencialAdesão = listaPotencialAdesao.Count();
 
             return indiceVips;
+        }
+        public List<ClienteCadastroViewModel> ListarClientes()
+        {
+            var listaClientes = _mapper.Map<List<ClienteCadastroViewModel>>(_clienteRepository.ListarClientes());
+
+            return listaClientes;
         }
 
         public EnderecoViewModel BuscarClienteEndereco(int id)
@@ -71,20 +73,29 @@ namespace TargetInvest.Services
             return _mapper.Map<ClienteCadastroViewModel>(cliente);
         }
 
-        public List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal)
-        {
-            var clientesPorDataCadastro = _mapper.Map<List<ClienteViewModel>>
-                (_clienteRepository.ListaPorDataDeCadastro(dataInicial, dataFinal));
-            
-            return clientesPorDataCadastro;
-        }
-
         public List<ClienteViewModel> ListarPorRenda(double valor)
         {
             var clientesPorRenda = _mapper.Map<List<ClienteViewModel>>
-                (_clienteRepository.ListarPorRenda(valor));
+                (_clienteRepository.ListarClientes().Where(c => c.RendaMensal >= valor));
 
             return clientesPorRenda;
+        }
+
+        public void AtualizarEndereco(int id, EnderecoViewModel enderecoViewModel)
+        {
+            var cliente = _clienteRepository.BuscarCliente(id);
+
+            cliente.Endereco.Update(_mapper.Map<Endereco>(enderecoViewModel));
+
+            _clienteRepository.Atualizar(cliente);
+        }
+        public List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal)
+        {
+            var clientesPorDataCadastro = _mapper.Map<List<ClienteViewModel>>
+                (_clienteRepository.ListarClientes()
+                .Where(c => c.DataCadastro >= dataInicial && c.DataCadastro <= dataFinal));
+            
+            return clientesPorDataCadastro;
         }
 
         public FinalizaCadastroViewModel Cadastrar(ClienteCadastroViewModel clienteViewModel, EnderecoViewModel enderecoViewModel)
@@ -101,15 +112,6 @@ namespace TargetInvest.Services
             };
 
             return finalizaCadastro;
-        }
-
-        public void AtualizarEndereco(int id, EnderecoViewModel enderecoViewModel)
-        {
-            var cliente = _clienteRepository.BuscarCliente(id);
-
-            cliente.Endereco.Update(_mapper.Map<Endereco>(enderecoViewModel));
-
-            _clienteRepository.Atualizar(cliente);
         }
 
         private bool ValidaCPF(string vrCPF)

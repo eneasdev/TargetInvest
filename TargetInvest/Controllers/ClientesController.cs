@@ -26,6 +26,15 @@ namespace TargetInvest.Controllers
         }
 
         [ApiKey]
+        [HttpGet("indice-vips")]
+        public IActionResult GetIndiceVips()
+        {
+            var indiceVips = _clienteService.IndiceVip();
+
+            return Ok(indiceVips);
+        }
+
+        [ApiKey]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -37,41 +46,30 @@ namespace TargetInvest.Controllers
         }
 
         [ApiKey]
-        [HttpGet("indice-vips")]
-        public IActionResult Get(IndiceVipsViewModel indiceVipsViewModel)
-        {
-            var endereco = _clienteService.BuscarClienteEndereco(id);
-
-            if (endereco == null) return BadRequest();
-
-            return Ok(endereco);
-        }
-
-        [ApiKey]
         [HttpGet("{id}/endereco")]
-        public IActionResult Get(int id)
+        public IActionResult GetEndereco(int id)
         {
             var endereco = _clienteService.BuscarClienteEndereco(id);
 
             if (endereco == null) return BadRequest();
 
             return Ok(endereco);
-        }
-
-        [ApiKey]
-        [HttpGet("data-cadastro")]
-        public IActionResult Get([FromBody] PesquisaDataCadastro dataCadastro)
-        {
-            var listaDataDeCadastro = _clienteService.ListarPorDataCadastro(dataCadastro.DataCadastroInicial, dataCadastro.DataCadastroFinal);
-            return Ok(listaDataDeCadastro);
         }
 
         [ApiKey]
         [HttpGet("renda/{valor}")]
-        public IActionResult Get(double Valor)
+        public IActionResult GetRenda(double Valor)
         {
             var listaPorRenda = _clienteService.ListarPorRenda(Valor);
             return Ok(listaPorRenda);
+        }
+
+        [ApiKey]
+        [HttpGet("data-cadastro")]
+        public IActionResult GetDataCadastro([FromBody] PesquisaDataCadastro dataCadastro)
+        {
+            var listaDataDeCadastro = _clienteService.ListarPorDataCadastro(dataCadastro.DataCadastroInicial, dataCadastro.DataCadastroFinal);
+            return Ok(listaDataDeCadastro);
         }
 
         [HttpPost]

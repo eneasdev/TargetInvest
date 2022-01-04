@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TargetInvest.Models;
 
 namespace TargetInvest.Services
 {
     public interface IClienteService
     {
-        FinalizaCadastroViewModel Cadastrar(ClienteCadastroViewModel clienteViewModel, EnderecoViewModel enderecoViewModel);
-        List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal);
+        IndiceVipsViewModel IndiceVip();
         List<ClienteCadastroViewModel> ListarClientes();
-        List<ClienteViewModel> ListarPorRenda(double valor);
-        IndiceVipsViewModel IndiceVip(IndiceVipsViewModel indiceVips);
         ClienteCadastroViewModel BuscarCliente(int id);
         EnderecoViewModel BuscarClienteEndereco(int id);
+        List<ClienteViewModel> ListarPorRenda(double valor);
         void AtualizarEndereco(int id, EnderecoViewModel enderecoViewModel);
-
+        List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal);
+        FinalizaCadastroViewModel Cadastrar(ClienteCadastroViewModel clienteViewModel, EnderecoViewModel enderecoViewModel);
     }
 }

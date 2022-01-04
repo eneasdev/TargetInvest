@@ -22,20 +22,7 @@ namespace TargetInvest.Repositories
         {
             return _targetContext.Clientes
                 .Include(c => c.Endereco)
-                .ToList();
-        }
-
-        public List<Cliente> ListaPorDataDeCadastro(DateTime dataInicial, DateTime dataFinal)
-        {
-            return _targetContext.Clientes
-                .Where(c => c.DataCadastro >= dataInicial && c.DataCadastro <= dataFinal)
-                .ToList();
-        }
-
-        public List<Cliente> ListarPorRenda(double valor)
-        {
-            return _targetContext.Clientes
-                .Where(c => c.RendaMensal >= valor)
+                .Include(c => c.Vip)
                 .ToList();
         }
 
