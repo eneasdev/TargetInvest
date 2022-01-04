@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using TargetInvest.Application.Models.InputModels;
+using TargetInvest.Application.Models.ViewModels;
 using TargetInvest.Domain.Entities;
-using TargetInvest.Models;
 
 namespace TargetInvest.Mapper
 {
@@ -8,8 +9,8 @@ namespace TargetInvest.Mapper
     {
         public AutoMapping()
         {
-            CreateMap<ClienteCadastroViewModel, Cliente>();
-            CreateMap<Cliente, ClienteCadastroViewModel>();
+            CreateMap<NovoClienteInputModel, Cliente>();
+            CreateMap<Cliente, NovoClienteInputModel>();
 
             CreateMap<ClienteViewModel, Cliente>();
             CreateMap<Cliente, ClienteViewModel>();

@@ -1,4 +1,6 @@
-﻿namespace TargetInvest.Domain.Interfaces.Services
+﻿using TargetInvest.Application.Models.ViewModels;
+
+namespace TargetInvest.Application.Interfaces
 {
     public interface IVipService
     {

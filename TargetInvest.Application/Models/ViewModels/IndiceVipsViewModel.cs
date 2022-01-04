@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TargetInvest.Models
+﻿namespace TargetInvest.Application.Models.ViewModels
 {
     public class IndiceVipsViewModel
     {

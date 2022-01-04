@@ -4,7 +4,10 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using TargetInvest.Models;
+using TargetInvest.Application.Attributes;
+using TargetInvest.Application.Interfaces;
+using TargetInvest.Application.Models.InputModels;
+using TargetInvest.Application.Models.ViewModels;
 
 namespace TargetInvest.Controllers
 {
@@ -60,14 +63,14 @@ namespace TargetInvest.Controllers
 
         [ApiKey]
         [HttpGet("data-cadastro")]
-        public IActionResult GetDataCadastro([FromBody] PesquisaDataCadastro dataCadastro)
+        public IActionResult GetDataCadastro([FromBody] PesquisaDataCadastroViewModel dataCadastro)
         {
             var listaDataDeCadastro = _clienteService.ListarPorDataCadastro(dataCadastro.DataCadastroInicial, dataCadastro.DataCadastroFinal);
             return Ok(listaDataDeCadastro);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post ([FromBody] ClienteCadastroViewModel clienteViewModel)
+        public async Task<IActionResult> Post ([FromBody] NovoClienteInputModel clienteViewModel)
         {
             var enderecoViewModel = await InicilizeAPI(clienteViewModel.Cep);
 

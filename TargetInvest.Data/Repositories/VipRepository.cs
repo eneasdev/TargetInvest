@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TargetInvest.Entities;
+﻿using System.Linq;
+using TargetInvest.Domain.Entities;
+using TargetInvest.Domain.Repositories;
 
 namespace TargetInvest.Infrastructure.Repositories
 {

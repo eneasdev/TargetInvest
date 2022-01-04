@@ -1,4 +1,4 @@
-﻿namespace TargetInvest.Models
+﻿namespace TargetInvest.Application.Models.ViewModels
 {
     public class EnderecoViewModel
     {

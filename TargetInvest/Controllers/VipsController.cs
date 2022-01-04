@@ -1,12 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TargetInvest.Attributes;
-using TargetInvest.Domain.Interfaces.Services;
-using TargetInvest.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using TargetInvest.Application.Interfaces;
+using TargetInvest.Application.Models.ViewModels;
 
 namespace TargetInvest.Controllers
 {

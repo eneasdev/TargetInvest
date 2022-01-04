@@ -1,7 +1,12 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using TargetInvest.Domain.Interfaces.Services;
+using TargetInvest.Application.Interfaces;
+using TargetInvest.Application.Models.InputModels;
+using TargetInvest.Application.Models.ViewModels;
+using TargetInvest.Domain.Entities;
+using TargetInvest.Domain.Repositories;
 
 namespace TargetInvest.Application.Services
 {
@@ -43,9 +48,9 @@ namespace TargetInvest.Application.Services
 
             return indiceVips;
         }
-        public List<ClienteCadastroViewModel> ListarClientes()
+        public List<ClienteViewModel> ListarClientes()
         {
-            var listaClientes = _mapper.Map<List<ClienteCadastroViewModel>>(_clienteRepository.ListarClientes());
+            var listaClientes = _mapper.Map<List<ClienteViewModel>>(_clienteRepository.ListarClientes());
 
             return listaClientes;
         }
@@ -61,13 +66,13 @@ namespace TargetInvest.Application.Services
             return _mapper.Map<EnderecoViewModel>(endereco);
         }
 
-        public ClienteCadastroViewModel BuscarCliente(int id)
+        public ClienteViewModel BuscarCliente(int id)
         {
             if (id <= 0) return null;
 
             var cliente = _clienteRepository.BuscarCliente(id);
 
-            return _mapper.Map<ClienteCadastroViewModel>(cliente);
+            return _mapper.Map<ClienteViewModel>(cliente);
         }
 
         public List<ClienteViewModel> ListarPorRenda(double valor)
@@ -95,7 +100,7 @@ namespace TargetInvest.Application.Services
             return clientesPorDataCadastro;
         }
 
-        public FinalizaCadastroViewModel Cadastrar(ClienteCadastroViewModel clienteViewModel, EnderecoViewModel enderecoViewModel)
+        public FinalizaCadastroViewModel Cadastrar(NovoClienteInputModel clienteViewModel, EnderecoViewModel enderecoViewModel)
         {
             if (ValidaCPF(clienteViewModel.Cpf) != true) return null;
 

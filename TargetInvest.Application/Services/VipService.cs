@@ -1,12 +1,7 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TargetInvest.Domain.Interfaces.Services;
-using TargetInvest.Entities;
-using TargetInvest.Models;
-using TargetInvest.Repositories;
+using TargetInvest.Application.Interfaces;
+using TargetInvest.Application.Models.ViewModels;
+using TargetInvest.Domain.Repositories;
 
 namespace TargetInvest.Application.Services
 {

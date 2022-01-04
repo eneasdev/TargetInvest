@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using TargetInvest.Entities;
-using TargetInvest.Models;
+using TargetInvest.Domain.Entities;
+using TargetInvest.Domain.Repositories;
 
 namespace TargetInvest.Infrastructure.Repositories
 {

@@ -1,6 +1,6 @@
 ﻿using TargetInvest.Domain.Entities;
 
-namespace TargetInvest.Domain.Interfaces.Repositories
+namespace TargetInvest.Domain.Repositories
 {
     public interface IVipRepository
     {
