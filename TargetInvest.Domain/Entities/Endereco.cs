@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TargetInvest.Entities
+namespace TargetInvest.Domain.Entities
 {
     public class Endereco
     {

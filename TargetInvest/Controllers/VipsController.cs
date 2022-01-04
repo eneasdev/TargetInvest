@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TargetInvest.Attributes;
+using TargetInvest.Domain.Interfaces.Services;
 using TargetInvest.Models;
-using TargetInvest.Services;
 
 namespace TargetInvest.Controllers
 {

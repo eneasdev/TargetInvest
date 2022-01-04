@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using TargetInvest.Entities;
 
-namespace TargetInvest.Data
+namespace TargetInvest.Infrastructure
 {
     public class TargetContext : DbContext
     {

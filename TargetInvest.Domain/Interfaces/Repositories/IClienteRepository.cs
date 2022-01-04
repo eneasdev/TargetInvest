@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TargetInvest.Entities;
+﻿using System.Collections.Generic;
+using TargetInvest.Domain.Entities;
 
-namespace TargetInvest.Repositories
+namespace TargetInvest.Domain.Repositories
 {
     public interface IClienteRepository
     {

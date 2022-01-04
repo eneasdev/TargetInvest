@@ -5,8 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="InputModels\" />
-    <Folder Include="ViewModels\" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TargetInvest.Domain\TargetInvest.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\InputModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
 
 </Project>

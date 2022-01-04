@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TargetInvest.Data;
 using TargetInvest.Entities;
 
-namespace TargetInvest.Repositories
+namespace TargetInvest.Infrastructure.Repositories
 {
     public class VipRepository : IVipRepository
     {

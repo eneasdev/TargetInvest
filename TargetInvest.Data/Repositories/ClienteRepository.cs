@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TargetInvest.Data;
 using TargetInvest.Entities;
 using TargetInvest.Models;
 
-namespace TargetInvest.Repositories
+namespace TargetInvest.Infrastructure.Repositories
 {
     public class ClienteRepository : IClienteRepository
     {
@@ -44,7 +43,7 @@ namespace TargetInvest.Repositories
             catch
             {
                 return false;
-            } 
+            }
         }
 
         public Cliente Atualizar(Cliente cliente)

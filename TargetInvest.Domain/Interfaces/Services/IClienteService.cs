@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using TargetInvest.Models;
 
-namespace TargetInvest.Services
+namespace TargetInvest.Domain.Interfaces.Services
 {
     public interface IClienteService
     {

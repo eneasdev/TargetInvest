@@ -13,8 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TargetInvest.Data;
+using TargetInvest.Domain.Interfaces.Services;
 using TargetInvest.Repositories;
-using TargetInvest.Services;
 
 namespace TargetInvest
 {

@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TargetInvest.Entities;
+using TargetInvest.Domain.Entities;
 using TargetInvest.Models;
 
-namespace TargetInvest.AutoMapper
+namespace TargetInvest.Mapper
 {
     public class AutoMapping : Profile
     {

@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TargetInvest.Entities;
-using TargetInvest.Models;
-using TargetInvest.Repositories;
+using TargetInvest.Domain.Interfaces.Services;
 
-namespace TargetInvest.Services
+namespace TargetInvest.Application.Services
 {
     public class ClienteService : IClienteService
     {
@@ -94,7 +91,7 @@ namespace TargetInvest.Services
             var clientesPorDataCadastro = _mapper.Map<List<ClienteViewModel>>
                 (_clienteRepository.ListarClientes()
                 .Where(c => c.DataCadastro >= dataInicial && c.DataCadastro <= dataFinal));
-            
+
             return clientesPorDataCadastro;
         }
 

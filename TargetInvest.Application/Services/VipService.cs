@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TargetInvest.Domain.Interfaces.Services;
 using TargetInvest.Entities;
 using TargetInvest.Models;
 using TargetInvest.Repositories;
 
-namespace TargetInvest.Services
+namespace TargetInvest.Application.Services
 {
     public class VipService : IVipService
     {
@@ -35,7 +36,7 @@ namespace TargetInvest.Services
         {
             var cliente = _clienteRepository.BuscarCliente(vipRespostaViewModel.ClienteId);
             var vip = _vipRepository.BuscarVip(1);
-            if ( vipRespostaViewModel.Resposta == true)
+            if (vipRespostaViewModel.Resposta == true)
             {
                 cliente.Vip = vip;
                 _clienteRepository.Atualizar(cliente);
