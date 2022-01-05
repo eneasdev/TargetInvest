@@ -30,13 +30,13 @@ $ git clone https://github.com/eneasdev/TargetInvest.git
 2. Abra o repositório no Visual Studio 2019, e inicie a API TargetInvest.
 3. Abra o Postman, clique no botão "Import" que fica a direita do botão "New".
 <h1 align="center">
-  <img src="./assets/import_image.jpg" />
+  <img src="./Assets/import_image.jpg" />
 </h1>
 4. Vá na pasta "Postman Collection", que fica no repositório do projeto.
 <h1 align="center">
-  <img src="./assets/postmancollection.jpg" />
+  <img src="./Assets/postmancollection.jpg" />
 </h1>
 5. Arraste o arquivo JSON para a área pontilhada ou acesse a pasta "Postaman Colletion" através do botão "Upload Files".
 <h1 align="center">
-  <img src="./assets/import_2_image.jpg" />
+  <img src="./Assets/import_2_image.jpg" />
 </h1>
