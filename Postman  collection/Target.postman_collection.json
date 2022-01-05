@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "b936adaa-33b4-4bf6-bc9e-aa3abc06d09d",
+		"name": "Target",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastrar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "target_9KrBxIEu08D62XAC17QUkMD65CFetb06NVPIfHDlAm0",
+						"type": "string"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nomeCompleto\": \"Maria De Fatima\",\r\n    \"cpf\": \"148.959.617-88\",\r\n    \"rendaMensal\": 15000,\r\n    \"dataNascimento\": \"1991-12-27\",\r\n    \"cep\": \"20970-006\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44321/api/clientes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Endereço",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "target_9KrBxIEu08D62XAC17QUkMD65CFetb06NVPIfHDlAm0",
+						"type": "string"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cep\": \"20970-006\",\r\n    \"logradouro\": \"Rua Amaro Rangel\",\r\n    \"bairro\": \"Jacaré\",\r\n    \"cidade\": \"Rio de Janeiro\",\r\n    \"uf\": \"RJ\",\r\n    \"complemento\": \"Casa Sabiá\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44321/api/clientes/2/endereco",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"clientes",
+						"2",
+						"endereco"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar cliente por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44321/api/clientes/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"clientes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vip Detalhes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44321/api/vips/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"vips",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VipResposta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "target_9KrBxIEu08D62XAC17QUkMD65CFetb06NVPIfHDlAm0",
+						"type": "string"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clienteId\": 11,\r\n    \"resposta\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44321/api/vips",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"vips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Indice de Vips",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "target_9KrBxIEu08D62XAC17QUkMD65CFetb06NVPIfHDlAm0",
+						"type": "string"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44321/api/clientes/indice-vips",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"clientes",
+						"indice-vips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar endereço do cliente",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "target_9KrBxIEu08D62XAC17QUkMD65CFetb06NVPIfHDlAm0",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44321/api/clientes/3/endereco",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"clientes",
+						"3",
+						"endereco"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar cliente por renda mensal",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "api_key",
+						"value": "target_9KrBxIEu08D62XAC17QUkMD65CFetb06NVPIfHDlAm0",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44321/api/clientes?renda=6000",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"clientes"
+					],
+					"query": [
+						{
+							"key": "renda",
+							"value": "6000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por data de cadastro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44321/api/clientes/data-cadastro",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44321",
+					"path": [
+						"api",
+						"clientes",
+						"data-cadastro"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
