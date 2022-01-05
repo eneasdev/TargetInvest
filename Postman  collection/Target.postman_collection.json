@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nomeCompleto\": \"Maria De Fatima\",\r\n    \"cpf\": \"148.959.617-88\",\r\n    \"rendaMensal\": 15000,\r\n    \"dataNascimento\": \"1991-12-27\",\r\n    \"cep\": \"20970-006\"\r\n}",
+					"raw": "{\r\n    \"nomeCompleto\": \"Maria De Fatima\",\r\n    \"cpf\": \"211.326.650-43\",\r\n    \"rendaMensal\": 15000,\r\n    \"dataNascimento\": \"1991-12-27\",\r\n    \"cep\": \"20970-006\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
