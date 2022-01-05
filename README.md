@@ -10,9 +10,7 @@
 
 ### Sobre
 
-	<p align="center>
-	Este projeto foi feito para um desafio da TargetBank, onde o maior intuito é visualizar melhor meu trajeto e evolução do projeto, onde eu coloquei meus conhecimentos atuais sobre as tecnologias empregadas e alguns conhecimentos que adquiri durante o desafio.
-	</p>
+Este projeto foi feito para um desafio da TargetBank, onde o maior intuito é visualizar melhor meu trajeto e evolução do projeto, onde eu coloquei meus conhecimentos atuais sobre as tecnologias empregadas e alguns conhecimentos que adquiri durante o desafio.
 	
 
 ### Técnologias
