@@ -10,7 +10,7 @@
 
 ### Sobre
 
-	Este projeto foi feito para um desafio da TargetBank, onde o maior intuito é visualizar melhor meu trajeto e evolução do projeto, onde eu coloquei meus conhecimentos atuais sobre as tecnologias empregadas e alguns conhecimentos que adquiri durante o desafio.
+Este projeto foi feito para um desafio da TargetBank, onde o maior intuito é visualizar melhor meu trajeto e evolução do projeto, onde eu coloquei meus conhecimentos atuais sobre as tecnologias empregadas e alguns conhecimentos que adquiri durante o desafio.
 	
 
 ### Técnologias
@@ -28,3 +28,15 @@
 $ git clone https://github.com/eneasdev/TargetInvest.git
 ```
 2. Abra o repositório no Visual Studio 2019, e inicie a API TargetInvest.
+3. Abra o Postman, clique no botão "Import" que fica a direita do botão "New".
+<h1 align="center">
+  <img src="./assets/import_image.jpg" />
+</h1>
+4. Vá na pasta "Postman Collection", que fica no repositório do projeto.
+<h1 align="center">
+  <img src="./assets/postmancollection.jpg" />
+</h1>
+5. Arraste o arquivo JSON para a área pontilhada ou acesse a pasta "Postaman Colletion" através do botão "Upload Files".
+<h1 align="center">
+  <img src="./assets/import_2_image.jpg" />
+</h1>
