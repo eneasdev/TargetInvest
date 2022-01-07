@@ -13,7 +13,8 @@ namespace TargetInvest.Mapper
             CreateMap<Cliente, NovoClienteInputModel>();
 
             CreateMap<ClienteViewModel, Cliente>();
-            CreateMap<Cliente, ClienteViewModel>();
+            CreateMap<Cliente, ClienteViewModel>()
+                .ForMember(c => c.Renda, opt => opt.MapFrom(src => src.RendaMensal));
 
             CreateMap<EnderecoViewModel, Endereco>();
             CreateMap<Endereco, EnderecoViewModel>();

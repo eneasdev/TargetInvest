@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TargetInvest", "TargetInves
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TargetInvest.Domain", "TargetInvest.Domain\TargetInvest.Domain.csproj", "{DAE6200F-7B32-48BD-8CED-68B315C50FDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetInvest.Infrastructure", "TargetInvest.Data\TargetInvest.Infrastructure.csproj", "{44EEBEA7-60C2-4841-BB9E-AE3C11424F47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TargetInvest.Infrastructure", "TargetInvest.Data\TargetInvest.Infrastructure.csproj", "{44EEBEA7-60C2-4841-BB9E-AE3C11424F47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetInvest.Application", "TargetInvest.Application\TargetInvest.Application.csproj", "{5173FD8A-38FE-4A9F-B0E9-34FB64669EC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TargetInvest.Application", "TargetInvest.Application\TargetInvest.Application.csproj", "{5173FD8A-38FE-4A9F-B0E9-34FB64669EC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetInvest.Tests", "TargetInvest.Tests\TargetInvest.Tests.csproj", "{9C09A36C-DE71-4C66-AC68-9CB585EEF2D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5173FD8A-38FE-4A9F-B0E9-34FB64669EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5173FD8A-38FE-4A9F-B0E9-34FB64669EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5173FD8A-38FE-4A9F-B0E9-34FB64669EC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C09A36C-DE71-4C66-AC68-9CB585EEF2D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C09A36C-DE71-4C66-AC68-9CB585EEF2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C09A36C-DE71-4C66-AC68-9CB585EEF2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C09A36C-DE71-4C66-AC68-9CB585EEF2D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

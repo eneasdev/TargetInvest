@@ -54,10 +54,10 @@ namespace TargetInvest.Controllers
         }
 
         [ApiKey]
-        [HttpGet("renda/{valor}")]
-        public IActionResult GetRenda(double Valor)
+        [HttpGet]
+        public IActionResult GetRenda(double renda)
         {
-            var listaPorRenda = _clienteService.ListarPorRenda(Valor);
+            var listaPorRenda = _clienteService.ListarPorRenda(renda);
             return Ok(listaPorRenda);
         }
 
@@ -87,8 +87,8 @@ namespace TargetInvest.Controllers
         [HttpPut("{id}/endereco")]
         public IActionResult Put(int id, [FromBody] EnderecoViewModel enderecoViewModel)
         {
-            _clienteService.AtualizarEndereco(id, enderecoViewModel);
-            return Ok();
+            var novoEndereco = _clienteService.AtualizarEndereco(id, enderecoViewModel);
+            return Ok(novoEndereco);
         }
 
         private async Task<EnderecoViewModel> InicilizeAPI(string cep)

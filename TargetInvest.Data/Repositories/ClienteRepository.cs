@@ -22,6 +22,14 @@ namespace TargetInvest.Infrastructure.Repositories
                 .Include(c => c.Vip)
                 .ToList();
         }
+        public List<Cliente> ListarPorRenda(double renda)
+        {
+            return _targetContext.Clientes
+                .Include(c => c.Endereco)
+                .Include(c => c.Vip)
+                .Where(c => c.RendaMensal >= renda)
+                .ToList();
+        }
 
         public Cliente BuscarCliente(int id)
         {

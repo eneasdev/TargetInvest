@@ -7,6 +7,7 @@ namespace TargetInvest.Domain.Repositories
     {
         bool Cadastrar(Cliente cliente);
         List<Cliente> ListarClientes();
+        List<Cliente> ListarPorRenda(double renda);
         Cliente BuscarCliente(int id);
         Cliente Atualizar(Cliente cliente);
     }

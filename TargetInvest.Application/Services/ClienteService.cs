@@ -26,33 +26,35 @@ namespace TargetInvest.Application.Services
         {
             var listaAdesao = new List<Cliente>();
             var listaPotencialAdesao = new List<Cliente>();
-            var listaMaiorSeisMil = _clienteRepository.ListarClientes()
+            try
+            {
+                var listaMaiorSeisMil = _clienteRepository.ListarClientes()
                 .Where(c => c.RendaMensal >= valorMinimoParaSerVip);
 
-            foreach (var cliente in listaMaiorSeisMil)
-            {
-                if (cliente.Vip != null)
+                foreach (var cliente in listaMaiorSeisMil)
                 {
-                    listaAdesao.Add(cliente);
+                    if (cliente.Vip != null)
+                    {
+                        listaAdesao.Add(cliente);
+                    }
+                    else
+                    {
+                        listaPotencialAdesao.Add(cliente);
+                    }
                 }
-                else
+
+                var indiceVips = new IndiceVipsViewModel
                 {
-                    listaPotencialAdesao.Add(cliente);
-                }
+                    Adesão = listaAdesao.Count,
+                    PotencialAdesão = listaPotencialAdesao.Count
+                };
+
+                return indiceVips;
             }
-
-            var indiceVips = new IndiceVipsViewModel();
-
-            indiceVips.Adesão = listaAdesao.Count();
-            indiceVips.PotencialAdesão = listaPotencialAdesao.Count();
-
-            return indiceVips;
-        }
-        public List<ClienteViewModel> ListarClientes()
-        {
-            var listaClientes = _mapper.Map<List<ClienteViewModel>>(_clienteRepository.ListarClientes());
-
-            return listaClientes;
+            catch
+            {
+                return null;
+            }
         }
 
         public EnderecoViewModel BuscarClienteEndereco(int id)
@@ -75,21 +77,27 @@ namespace TargetInvest.Application.Services
             return _mapper.Map<ClienteViewModel>(cliente);
         }
 
-        public List<ClienteViewModel> ListarPorRenda(double valor)
+        public List<ClienteViewModel> ListarPorRenda(double renda)
         {
+            if (renda <= 0) return null;
+
             var clientesPorRenda = _mapper.Map<List<ClienteViewModel>>
-                (_clienteRepository.ListarClientes().Where(c => c.RendaMensal >= valor));
+                (_clienteRepository.ListarPorRenda(renda));
 
             return clientesPorRenda;
         }
 
-        public void AtualizarEndereco(int id, EnderecoViewModel enderecoViewModel)
+        public EnderecoViewModel AtualizarEndereco(int id, EnderecoViewModel enderecoViewModel)
         {
+            if (enderecoViewModel == null) return null;
+
             var cliente = _clienteRepository.BuscarCliente(id);
 
             cliente.Endereco.Update(_mapper.Map<Endereco>(enderecoViewModel));
 
-            _clienteRepository.Atualizar(cliente);
+            var clienteAtualizado = _clienteRepository.Atualizar(cliente);
+
+            return _mapper.Map<EnderecoViewModel>(clienteAtualizado.Endereco);
         }
         public List<ClienteViewModel> ListarPorDataCadastro(DateTime dataInicial, DateTime dataFinal)
         {
