@@ -20,6 +20,7 @@ Este projeto foi feito para um desafio da TargetBank, onde o maior intuito é vi
 - [IDE: Visual Studio 2019](https://docs.microsoft.com/pt-br/visualstudio/releases/2019/release-notes)
 - [AutoMapper](https://automapper.org/)
 - [Postman](https://www.postman.com/)
+- [xUnit](https://xunit.net/)
 
 ### Como Usar
 
